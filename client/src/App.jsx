@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UsersPage from "./pages/UsersPage";
-import BooksPage from "./pages/BooksPage";
+import SimpleBooksPage from "./pages/SimpleBooksPage";
 
 function App() {
     return (
@@ -8,7 +8,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<UsersPage />} />
                 <Route path="" element={<UsersPage />} />
-                <Route path="/books" element={<BooksPage />} />
+                <Route path="/simple-books" element={<SimpleBooksPage />} />
             </Routes>
         </Router>
     );

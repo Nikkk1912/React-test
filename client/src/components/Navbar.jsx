@@ -7,7 +7,7 @@ function NavbarComponent() {
             <Navbar.Brand className="mx-auto text-center" href="/">Management</Navbar.Brand>
             <Nav className="ml-auto justify-content-sm-center">
                 <Nav.Link as={Link} to="/">Users</Nav.Link>
-                <Nav.Link as={Link} to="/books">Books</Nav.Link>
+                <Nav.Link as={Link} to="/simple-books">Books</Nav.Link>
             </Nav>
         </Navbar>
     );
