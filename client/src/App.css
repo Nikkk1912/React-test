@@ -13,6 +13,7 @@ body {
 .navbar {
   border-radius: 10px;
   font-weight: bold;
+  flex-direction: column;
 }
 
 #root {
