@@ -10,23 +10,35 @@ body {
   color: #333;
 }
 
+.navbar {
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#root {
+  min-width: 80%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .form::-webkit-scrollbar {
   display: none;
 }
 
-.form-group  {
+.form {
 
   .form-control::placeholder {
     color: #5383F4;
   }
-  .form-control[type=date] {
+  .form-control[type="number"]::placeholder {
     color: #5383F4;
   }
   .form-control:invalid {
-    background-color: #d6d6d6;
-  }
-  .form-control[type=date]:invalid {
-    background-color: #d6d6d6;
+    background-color: #474747;
   }
 }
 
