@@ -1,10 +1,10 @@
 const express = require('express');
 const userModel = require('./models/users');
 
-const endPoint = express.Router();
+const endPointMongo = express.Router();
 
 // POST
-endPoint.post('/users', async (req, res) => {
+endPointMongo.post('/users', async (req, res) => {
     const user = req.body;
     const newUser = new userModel(user);
 
@@ -17,7 +17,7 @@ endPoint.post('/users', async (req, res) => {
 });
 
 // GET
-endPoint.get('/users', async (req, res) => {
+endPointMongo.get('/users', async (req, res) => {
     try {
         const users = await userModel.find();
         res.status(200).json(users);
@@ -27,7 +27,7 @@ endPoint.get('/users', async (req, res) => {
 });
 
 // PUT
-endPoint.put('/users/:id', async (req, res) => {
+endPointMongo.put('/users/:id', async (req, res) => {
     const userId = req.params.id;
     const updateUserData = req.body;
 
@@ -44,7 +44,7 @@ endPoint.put('/users/:id', async (req, res) => {
 });
 
 // DELETE
-endPoint.delete('/users/:id', async (req, res) => {
+endPointMongo.delete('/users/:id', async (req, res) => {
     const userId = req.params.id;
 
     try {
@@ -60,4 +60,4 @@ endPoint.delete('/users/:id', async (req, res) => {
     }
 });
 
-module.exports = endPoint;
+module.exports = endPointMongo;

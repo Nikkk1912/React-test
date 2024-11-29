@@ -1,6 +1,8 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const routes = require('./routes');
+
+
+const routes = require('./UserRoutes');
+const routesPostgres = require('./BookRoutes');
 const cors = require('cors');
 
 const app = express();
@@ -8,11 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api', routes);
-
-// MongoDB
-mongoose.connect('mongodb://mykola:1234@localhost:27017/mongoHw3?authSource=admin')
-.then(() => console.log('Connected to mongodb!'))
-.catch(err => console.error("Bad staff happened to mongo ", err));
+app.use('/api', routesPostgres);
 
 // Server
 const port = 3001;
