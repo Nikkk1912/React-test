@@ -26,6 +26,26 @@ function UsersPage() {
         });
     };
 
+    const validateUserForm = () => {
+        if (!name || !age || !userName || !email || !surname) {
+            alert("All fields are required!");
+            return false;
+        }
+
+        if (isNaN(age) || age <= 0) {
+            alert("Age must be a valid number greater than 0.");
+            return false;
+        }
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+
+        return true;
+    };
+
     const selectUser = (user) => {
         setSelectedUser(user);
         setName(user.name);
@@ -38,13 +58,15 @@ function UsersPage() {
     const clearForm = () => {
         setSelectedUser(null);
         setName("");
-        setAge(0);
+        setAge("");
         setUserName("");
         setEmail("");
         setSurname("");
     };
 
     const createUser = () => {
+        if (!validateUserForm()) return;
+
         Axios.post("http://localhost:3001/api/users", { name, age, userName, email, surname }).then(() => {
             //alert("Made new user for u");
             updateUserList();
@@ -53,6 +75,8 @@ function UsersPage() {
     };
 
     const updateUser = () => {
+        if (!validateUserForm()) return;
+
         if (!selectedUser) {
             //alert("Please select a user to update.");
             return;
@@ -65,6 +89,7 @@ function UsersPage() {
     };
 
     const deleteUser = () => {
+
         if (!selectedUser) {
             //alert("Please select a user to delete.");
             return;

@@ -26,7 +26,7 @@ endPointPostgres.get('/books', async (req, res) => {
 // POST
 endPointPostgres.post('/books', async (req, res) => {
     const book = req.body;
-        console.warn(book);
+
     try {
         const newBook = await bookModel.createBook(book.title, book.price, book.stock, book.bookCover);
         res.status(200).json(newBook);
@@ -49,5 +49,15 @@ endPointPostgres.put('/books/:id', async (req, res) => {
 });
 
 // DELETE
+endPointPostgres.delete('/books/:id', async (req, res) => {
+    const bookId = req.params.id;
+
+    try {
+        const deletedBook = await bookModel.deleteBook(bookId);
+        res.status(200).json(deletedBook);
+    } catch (error) {
+        res.status(500).json( { message: "Error deleting book", error: error.message });
+    }
+});
 
 module.exports = endPointPostgres;

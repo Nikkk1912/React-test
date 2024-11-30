@@ -42,7 +42,35 @@ function SimpleBookPage() {
         setBookCover("");
     };
 
+    const validateBookForm = () => {
+        if (!title) {
+            alert("Title is required.");
+            return false;
+        }
+
+        if (!price || isNaN(price) || price <= 0) {
+            alert("Price must be a valid number greater than 0.");
+            return false;
+        }
+
+        if (!Number.isInteger(Number(stock)) || stock < 0) {
+            alert("Stock must be a valid integer greater than or equal to 0.");
+            return false;
+        }
+
+        const bookCoverRegex = /\b\w+\.(jpg|png)\b$/i;
+        if (!bookCoverRegex.test(bookCover)) {
+            alert("Book cover must end with '.jpg' or '.png' and include a word.");
+            return false;
+        }
+
+        return true;
+    };
+
+
     const createBook = () => {
+        if (!validateBookForm()) return;
+
         Axios.post("http://localhost:3001/api/books", { title, price, stock, bookCover }).then(() => {
             //alert("Made new book for u");
             updateBookList();
@@ -51,6 +79,8 @@ function SimpleBookPage() {
     };
 
     const updateBook = () => {
+        if (!validateBookForm()) return;
+
         if (!selectedBook) {
             //alert("Please select a book to update.");
             return;
@@ -63,6 +93,7 @@ function SimpleBookPage() {
     };
 
     const deleteBook = () => {
+
         if (!selectedBook) {
             //alert("Please select a book to delete.");
             return;

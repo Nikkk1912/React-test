@@ -51,5 +51,18 @@ async function updateBook(bookId, bookTitle, bookPrice, bookStock, bookCover) {
     }
 }
 
-module.exports = { getBookById, getAllBooks, createBook, updateBook};
+async function deleteBook(bookId) {
+    const query = 'DELETE FROM books WHERE id = $1';
+    const values = [bookId];
+
+    try {
+        const result = await postgres.query(query, values);
+        return result.rows[0];
+    } catch (err) {
+        console.error('Error deleting book: ', err);
+        throw err;
+    }
+}
+
+module.exports = { getBookById, getAllBooks, createBook, updateBook, deleteBook};
 
