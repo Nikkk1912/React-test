@@ -26,9 +26,9 @@ endPointPostgres.get('/books', async (req, res) => {
 // POST
 endPointPostgres.post('/books', async (req, res) => {
     const book = req.body;
-
+        console.warn(book);
     try {
-        const newBook = await bookModel.createBook(book.bookTitle, book.bookPrice, book.bookStock, book.bookCover);
+        const newBook = await bookModel.createBook(book.title, book.price, book.stock, book.bookCover);
         res.status(200).json(newBook);
     } catch (error) {
         res.status(500).json({ message: "Error creating book", error: error.message });
@@ -41,7 +41,7 @@ endPointPostgres.put('/books/:id', async (req, res) => {
     const book = req.body;
 
     try {
-        const newBook = await bookModel.updateBook(bookId, book.bookTitle, book.bookPrice, book.bookStock, book.bookCover);
+        const newBook = await bookModel.updateBook(bookId, book.title, book.price, book.stock, book.bookCover);
         res.status(200).json(newBook);
     } catch (error) {
         res.status(500).json({ message: "Error updating book", error: error.message });

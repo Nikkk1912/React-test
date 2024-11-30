@@ -27,7 +27,6 @@ function SimpleBookPage() {
     };
 
     const selectBook = (book) => {
-        console.log(book);
         setSelectedBook(book);
         setTitle(book.title);
         setPrice(book.price);
