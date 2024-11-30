@@ -8,6 +8,7 @@ function NavbarComponent() {
             <Nav className="ml-auto justify-content-sm-center">
                 <Nav.Link as={Link} to="/">Users</Nav.Link>
                 <Nav.Link as={Link} to="/simple-books">Books</Nav.Link>
+                <Nav.Link as={Link} to="/java-books">Java Books</Nav.Link>
             </Nav>
         </Navbar>
     );

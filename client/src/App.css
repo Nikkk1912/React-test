@@ -10,6 +10,22 @@ body {
   color: #333;
 }
 
+.java-book-card:hover {
+  box-shadow: 0 0 10px #aaaaaa;
+  top: -10px;
+  background: #d2d2d2;
+}
+
+.img {
+  height: 450px;
+  width: 200px;
+}
+
+.page-img {
+  height: 650px;
+  width: 400px;
+}
+
 .navbar {
   border-radius: 10px;
   font-weight: bold;
