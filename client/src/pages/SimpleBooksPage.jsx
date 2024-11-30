@@ -32,13 +32,13 @@ function SimpleBookPage() {
         setTitle(book.title);
         setPrice(book.price);
         setStock(book.stock);
-        setBookCover(book.bookCover);
+        setBookCover(book["cover-file-name"]);
     };
 
     const clearForm = () => {
         setSelectedBook(null);
         setTitle("");
-        setPrice(0);
+        setPrice("");
         setStock("");
         setBookCover("");
     };
